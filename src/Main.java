@@ -12,7 +12,10 @@ public class Main {
         TestArrays.sortm(arr1);
         TestArrays.printm (arr1);
         TestArrays2.fillm2(arr2, row, col);
-        System.out.println(TestArrays2.printm2(arr2, row, col));
+
+        TestArrays2.sortm(arr2, row, col);
+        TestArrays2.printm2(arr2, row, col);
+
     }
 
 
@@ -25,7 +28,7 @@ public class Main {
         }
 
         static void printm(int m[]){
-            System.out.println(Arrays.toString(m));
+            System.out.println(Arrays.toString(m) + "\n");
         }
 
         static void sortm(int m[]){
@@ -51,7 +54,7 @@ public class Main {
 ///////////////For MAS [][]////////////////
     public static class TestArrays2 {
 
-        static String printm2(int m[][], int r, int c){
+        private static String Strm2(int m[][], int r, int c){
             if (m == null)
                 return "null";
             int iMax = c - 1;
@@ -74,6 +77,10 @@ public class Main {
             return b.toString();
         }
 
+        static void printm2(int m[][], int r, int c){
+        System.out.println(Strm2(m, r, c));}
+
+
         static void fillm2(int m[][], int r, int c){
             for (int i=0; i < r; i++){
                 for(int j = 0; j < c; j++){
@@ -86,11 +93,22 @@ public class Main {
             boolean t = true;
             while (t == true) {
                 t = false;
-
                 for (int i = 0; i < r; i++) {
-                    for (int j = 0; j < c; j++) {
+                    for (int j = 0; j < c - 1; j++) {
                         if (m[i][j] > m[i][j + 1]) {
-                            swap(m, i, j);
+                            swapx(m, i, j);
+                            t = true;
+                        }
+                    }
+                }
+            }
+            t = true;
+            while (t == true) {
+                t = false;
+                for (int j = 0; j < r; j++) {
+                    for (int i = 0; i < r - 1; i++) {
+                        if (m[i][j] > m[i + 1][j]) {
+                            swapy(m, i, j);
                             t = true;
                         }
                     }
@@ -98,15 +116,18 @@ public class Main {
             }
         }
 
-        static void swap(int mas[][], int i, int j){
+        static void swapx(int mas[][], int i, int j){
             int sp;
             sp = mas[i][j];
             mas[i][j] = mas[i][j + 1];
             mas[i][j + 1] = sp;
         }
-
-
-
+        static void swapy(int mas[][], int i, int j){
+            int sp;
+            sp = mas[i][j];
+            mas[i][j] = mas[i + 1][j];
+            mas[i + 1][j] = sp;
+        }
 
 
 
