@@ -16,6 +16,12 @@ public class Main {
         TestArrays2.sortm(arr2, row, col);
         TestArrays2.printm2(arr2, row, col);
 
+        TestArrays2.tablePifg(arr1, arr2, row, col);
+        TestArrays2.printm2(arr2, row, col);
+
+
+
+
     }
 
 
@@ -23,7 +29,7 @@ public class Main {
 
         static void fillm(int m[]){
             for (int i=0; i<m.length; i++){
-                m[i] = (int) (20*Math.random());
+                m[i] = (int) (20*Math.random() + 1);
             }
         }
 
@@ -60,9 +66,7 @@ public class Main {
             int iMax = c - 1;
             if (iMax == -1)
                 return "[]";
-
             StringBuilder b = new StringBuilder();
-
             for (int i = 0; i < r; i++){
                 b.append('[');
                 for(int j = 0; j < c; j++){
@@ -129,6 +133,21 @@ public class Main {
             mas[i + 1][j] = sp;
         }
 
+        static void tablePifg(int[] m, int arrP[][], int r, int c){
+            boolean ii = true;
+            while (ii == true){
+                for(int j = 1; j < c; j++){
+                    arrP[0][j] = m[j];
+                }
+                ii = false;
+            }
+            for (int i = 1; i < r; i++) {
+                arrP[i][0] = m[i];
+                for (int j = 1; j < c; j++) {
+                    arrP[i][j] = arrP[i][0] * m[j];
+                }
+            }
+        }
 
 
     }
